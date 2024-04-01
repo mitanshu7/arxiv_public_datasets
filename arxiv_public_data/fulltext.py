@@ -8,10 +8,12 @@ from functools import partial
 from multiprocessing import Pool
 from subprocess import check_call, CalledProcessError, TimeoutExpired, PIPE
 
-from config import LOGGER
-import fixunicode, pdfstamp
+from . import config, fixunicode
 
-log = LOGGER.getChild('fulltext')
+# from config import LOGGER
+# import fixunicode, pdfstamp
+
+log = config.LOGGER.getChild('fulltext')
 TIMELIMIT = 2*60
 STAMP_SEARCH_LIMIT = 1000
 
