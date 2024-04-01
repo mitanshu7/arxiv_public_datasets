@@ -8,8 +8,8 @@ from functools import partial
 from multiprocessing import Pool
 from subprocess import check_call, CalledProcessError, TimeoutExpired, PIPE
 
-from arxiv_public_data.config import LOGGER
-from arxiv_public_data import fixunicode, pdfstamp
+from config import LOGGER
+import fixunicode, pdfstamp
 
 log = LOGGER.getChild('fulltext')
 TIMELIMIT = 2*60
