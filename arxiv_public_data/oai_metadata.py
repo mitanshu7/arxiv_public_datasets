@@ -34,9 +34,9 @@ import datetime
 import requests
 import xml.etree.ElementTree as ET
 
-from arxiv_public_data.config import LOGGER, DIR_BASE
+from . import config # import LOGGER, DIR_BASE
 
-log = LOGGER.getChild('metadata')
+log = config.LOGGER.getChild('metadata')
 
 URL_ARXIV_OAI = 'https://export.arxiv.org/oai2'
 URL_CITESEER_OAI = 'http://citeseerx.ist.psu.edu/oai2'
@@ -176,9 +176,9 @@ def check_xml_errors(root):
         )
 
 def find_default_locations():
-    outfile = os.path.join(DIR_BASE, 'arxiv-metadata-oai-*.json.gz')
+    outfile = os.path.join(config.DIR_BASE, 'arxiv-metadata-oai-*.json.gz')
     resume = os.path.join(
-        DIR_BASE, 'arxiv-metadata-oai-*.json.gz-resumptionToken.txt'
+        config.DIR_BASE, 'arxiv-metadata-oai-*.json.gz-resumptionToken.txt'
     )
     fn_outfile = sorted(glob.glob(outfile))
     fn_resume = sorted(glob.glob(resume))
@@ -209,7 +209,7 @@ def all_of_arxiv(outfile=None, resumptionToken=None, autoresume=True):
         outfile or # user-supplied
         find_default_locations() or # already in progress 
         os.path.join(
-            DIR_BASE, 'arxiv-metadata-oai-{}.json.gz'.format(date)
+            config.DIR_BASE, 'arxiv-metadata-oai-{}.json.gz'.format(date)
         ) # new file
     )
 
