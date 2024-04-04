@@ -34,8 +34,7 @@ import datetime
 import requests
 import xml.etree.ElementTree as ET
 
-from . import config.LOGGER as LOGGER
-from . import config.DIR_BASE as DIR_BASE
+from arxiv_public_data.config import LOGGER, DIR_BASE
 
 log = LOGGER.getChild('metadata')
 
