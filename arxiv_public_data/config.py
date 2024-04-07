@@ -26,13 +26,13 @@ def get_outdir():
         if os.path.exists(JSONFILE):
             js = json.load(open(JSONFILE))
             if not KEY in js:
-                logger.warn('Configuration in "{}" invalid, using default'.format(JSONFILE))
-                logger.warn("default output directory is {}".format(DEFAULT_PATH))
+                # logger.warn('Configuration in "{}" invalid, using default'.format(JSONFILE))
+                # logger.warn("default output directory is {}".format(DEFAULT_PATH))
                 out = DEFAULT_PATH
             else:
                 out = js[KEY]
         else:
-            logger.warn("default output directory is {}".format(DEFAULT_PATH))
+            # logger.warn("default output directory is {}".format(DEFAULT_PATH))
             out = DEFAULT_PATH
     return out
 
