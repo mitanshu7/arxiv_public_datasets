@@ -82,7 +82,7 @@ def run_pdf2txt(pdffile: str, timelimit: int=TIMELIMIT, options: str=''):
     cmd = shlex.split(cmd)
     output = process_timeout(cmd, timeout=timelimit)
 
-    with open(tmpfile) as f:
+    with open(tmpfile, encoding='utf-8') as f:
         return f.read()
 
 
@@ -112,7 +112,7 @@ def run_pdftotext(pdffile: str, timelimit: int = TIMELIMIT) -> str:
     cmd = shlex.split(cmd)
     output = process_timeout(cmd, timeout=timelimit)
 
-    with open(tmpfile) as f:
+    with open(tmpfile, encoding='utf-8') as f:
         return f.read()
 
 
@@ -270,7 +270,7 @@ def convert_directory(path: str, timelimit: int = TIMELIMIT):
         # file so just charge onto the next one
         try:
             text = fulltext(pdffile, timelimit)
-            with open(txtfile, 'w') as f:
+            with open(txtfile, 'w', encoding='utf-8') as f:
                 f.write(text)
         except Exception as e:
             log.error("Conversion failed for '{}'".format(pdffile))
@@ -342,7 +342,7 @@ def convert(path: str, skipconverted=True, timelimit: int = TIMELIMIT) -> str:
 
     try:
         content = fulltext(path, timelimit)
-        with open(outpath, 'w') as f:
+        with open(outpath, 'w', encoding='utf-8') as f:
             f.write(content)
     except Exception as e:
         msg = "Conversion failed for '%s': %s"
